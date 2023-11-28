@@ -1,54 +1,83 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starry Night</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
-            background-color: black;
-            color: white; /* Set text color to white */
-            font-family: 'Arial', sans-serif; /* Set font family */
         }
 
-        .star, .floating-text {
-            position: absolute;
-            animation: twinkle 1s infinite, moveStar linear 10s infinite;
-            z-index: 1; /* Ensure stars are above the background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .star {
-            width: 2px;
-            height: 2px;
-            background-color: white;
-        }
-
-        .floating-text {
-            white-space: pre-line;
-            z-index: 2; /* Ensure text is above the stars */
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 0.4;
+            }
         }
 
-        @keyframes moveStar {
-            from { transform: translate(0, 0); }
-            to { transform: translate(100vw, 100vh); }
+        .content-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            font-size: 24px;
         }
     </style>
+    <title>Starry Content Page</title>
 </head>
 <body>
-    <h1>VMware Workstation Pro Activaion Keys</h1>
-    <p>Keys:</p>
+    <div class="stars"></div>
+    <div class="content-container" id="content-container">
+        <!-- Content will be dynamically generated here -->
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const numberOfStars = 50;
-            const pastedTexts = [
-                '4U612-DN31H-MJEJ0-0V0Z4-978HD
+        // Generate stars dynamically
+        const starsContainer = document.querySelector('.stars');
+        const numStars = 50;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = `${Math.random() * 3}px`;
+            star.style.height = star.style.width;
+
+            const xPos = Math.random() * 100;
+            const yPos = Math.random() * 100;
+
+            star.style.left = `${xPos}vw`;
+            star.style.top = `${yPos}vh`;
+
+            starsContainer.appendChild(star);
+        }
+
+        // Generate content dynamically
+        const contentContainer = document.getElementById('content-container');
+        const contentArray = [
+            "5G44H-ACH50-0J4C9-1VC5P-CY0QD",
+            "JC000-8G047-MJDF1-0H3E6-8QR5F",
+            "JV2NU-0XL5N-0J4Q8-0T0E6-8GH56",
+            "4U612-DN31H-MJEJ0-0V0Z4-978HD2,
 5G44H-ACH50-0J4C9-1VC5P-CY0QD
 JC000-8G047-MJDF1-0H3E6-8QR5F
 JV2NU-0XL5N-0J4Q8-0T0E6-8GH56
@@ -5330,35 +5359,15 @@ NV4D2-0T297-4J9G9-1CA5K-A72JA
 0C4NA-AG24H-0J8Y1-038XM-CL856
 NY2X8-6NK40-4J0G0-1TCEM-CF0K6
 4G618-69J0N-MJ1T1-0A272-9GRKA
-JF248-F01D6-HJ1Q0-0T176-9A074',
-                // Add your own pasted texts here
-            ];
+JF248-F01D6-HJ1Q0-0T176-9A074
+            // ... add more content items here
+        ];
 
-            for (let i = 0; i < numberOfStars; i++) {
-                createStar();
-            }
-
-            for (let text of pastedTexts) {
-                createFloatingText(text);
-            }
-
-            function createStar() {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + 'vw';
-                star.style.top = Math.random() * 100 + 'vh';
-                document.body.appendChild(star);
-            }
-
-            function createFloatingText(text) {
-                const floatingText = document.createElement('div');
-                floatingText.className = 'floating-text';
-                floatingText.innerText = text;
-                floatingText.style.left = Math.random() * 100 + 'vw';
-                floatingText.style.top = Math.random() * 100 + 'vh';
-                document.body.appendChild(floatingText);
-            }
-        });
+        for (let i = 0; i < 5000; i++) {
+            const contentItem = document.createElement('p');
+            contentItem.textContent = contentArray[i % contentArray.length];
+            contentContainer.appendChild(contentItem);
+        }
     </script>
 </body>
 </html>
