@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +46,6 @@
         .activation-key p {
             display: inline-block;
             margin-right: 10px; /* Adjust the margin as needed */
-            font-weight: 700; /* Bold */
         }
 
         .star {
@@ -103,7 +103,7 @@
         starsContainer.style.height = '100%';
         document.body.appendChild(starsContainer);
 
-        const numStars = 50;
+        const numStars = 200; // Increased the number of stars
 
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement('div');
