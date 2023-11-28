@@ -16,6 +16,7 @@
         .star, .floating-text {
             position: absolute;
             animation: twinkle 1s infinite, moveStar linear 10s infinite;
+            z-index: 1; /* Ensure stars are above the background */
         }
 
         .star {
@@ -26,6 +27,7 @@
 
         .floating-text {
             white-space: pre-line;
+            z-index: 2; /* Ensure text is above the stars */
         }
 
         @keyframes twinkle {
@@ -40,14 +42,14 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the Starry Night!</h1>
-    <p>This is a beautiful night sky with moving stars.</p>
+    <h1>VMware Workstation Pro Activaion Keys</h1>
+    <p>Keys:</p>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const numberOfStars = 50;
             const pastedTexts = [
-4U612-DN31H-MJEJ0-0V0Z4-978HD
+                '4U612-DN31H-MJEJ0-0V0Z4-978HD
 5G44H-ACH50-0J4C9-1VC5P-CY0QD
 JC000-8G047-MJDF1-0H3E6-8QR5F
 JV2NU-0XL5N-0J4Q8-0T0E6-8GH56
@@ -5329,7 +5331,7 @@ NV4D2-0T297-4J9G9-1CA5K-A72JA
 0C4NA-AG24H-0J8Y1-038XM-CL856
 NY2X8-6NK40-4J0G0-1TCEM-CF0K6
 4G618-69J0N-MJ1T1-0A272-9GRKA
-JF248-F01D6-HJ1Q0-0T176-9A074
+JF248-F01D6-HJ1Q0-0T176-9A074',
                 // Add your own pasted texts here
             ];
 
