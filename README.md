@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,12 +13,19 @@
             font-family: 'Arial', sans-serif; /* Set font family */
         }
 
-        .star {
+        .star, .floating-text {
             position: absolute;
+            animation: twinkle 1s infinite, moveStar linear 10s infinite;
+        }
+
+        .star {
             width: 2px;
             height: 2px;
             background-color: white;
-            animation: twinkle 1s infinite, moveStar linear 10s infinite;
+        }
+
+        .floating-text {
+            white-space: pre-line;
         }
 
         @keyframes twinkle {
@@ -32,8 +40,14 @@
     </style>
 </head>
 <body>
-    <h1>Vmware Workstation Pro 17 Keys</h1>
-    <p>4U612-DN31H-MJEJ0-0V0Z4-978HD
+    <h1>Welcome to the Starry Night!</h1>
+    <p>This is a beautiful night sky with moving stars.</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const numberOfStars = 50;
+            const pastedTexts = [
+4U612-DN31H-MJEJ0-0V0Z4-978HD
 5G44H-ACH50-0J4C9-1VC5P-CY0QD
 JC000-8G047-MJDF1-0H3E6-8QR5F
 JV2NU-0XL5N-0J4Q8-0T0E6-8GH56
@@ -5316,14 +5330,15 @@ NV4D2-0T297-4J9G9-1CA5K-A72JA
 NY2X8-6NK40-4J0G0-1TCEM-CF0K6
 4G618-69J0N-MJ1T1-0A272-9GRKA
 JF248-F01D6-HJ1Q0-0T176-9A074
-</p>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const numberOfStars = 50;
+                // Add your own pasted texts here
+            ];
 
             for (let i = 0; i < numberOfStars; i++) {
                 createStar();
+            }
+
+            for (let text of pastedTexts) {
+                createFloatingText(text);
             }
 
             function createStar() {
@@ -5332,6 +5347,15 @@ JF248-F01D6-HJ1Q0-0T176-9A074
                 star.style.left = Math.random() * 100 + 'vw';
                 star.style.top = Math.random() * 100 + 'vh';
                 document.body.appendChild(star);
+            }
+
+            function createFloatingText(text) {
+                const floatingText = document.createElement('div');
+                floatingText.className = 'floating-text';
+                floatingText.innerText = text;
+                floatingText.style.left = Math.random() * 100 + 'vw';
+                floatingText.style.top = Math.random() * 100 + 'vh';
+                document.body.appendChild(floatingText);
             }
         });
     </script>
