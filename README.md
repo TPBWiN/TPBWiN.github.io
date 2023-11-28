@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,14 +10,43 @@
             overflow: hidden;
             background-color: black;
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Roboto', sans-serif;
         }
 
         #content-container {
             z-index: 1;
             position: relative;
+            text-align: center;
+        }
+
+        .activation-key {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .copy-button {
+            cursor: pointer;
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            border: none;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+            padding: 5px 10px;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translate(50%, -50%);
+        }
+
+        .copy-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .activation-key p {
+            display: inline-block;
+            margin-right: 10px; /* Adjust the margin as needed */
+            font-weight: 700; /* Bold */
         }
 
         .star {
@@ -25,18 +55,10 @@
             height: 2px;
             background: white;
         }
-
-        #earth {
-            position: fixed;
-            width: 100px; /* Adjust the size as needed */
-            height: 100px;
-            z-index: 2;
-        }
     </style>
 </head>
 <body>
     <div id="content-container"></div>
-    <img id="earth" src="https://via.placeholder.com/100" alt="Earth">
 
     <script>
         // Function to generate a random number between min and max
@@ -54,8 +76,22 @@
         ];
 
         for (let i = 0; i < contentArray.length; i++) {
-            const contentItem = document.createElement('p');
-            contentItem.textContent = contentArray[i];
+            const contentItem = document.createElement('div');
+            contentItem.className = 'activation-key';
+
+            const keyText = document.createElement('p');
+            keyText.textContent = contentArray[i];
+
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-button';
+            copyButton.textContent = 'Copy';
+            copyButton.addEventListener('click', function () {
+                // Copy the activation key to the clipboard
+                navigator.clipboard.writeText(contentArray[i]);
+            });
+
+            contentItem.appendChild(keyText);
+            contentItem.appendChild(copyButton);
             contentContainer.appendChild(contentItem);
         }
 
@@ -77,11 +113,6 @@
 
             animateStar(star);
         }
-
-        // Position the Earth image
-        const earth = document.getElementById('earth');
-        earth.style.left = `${window.innerWidth / 2 - 50}px`; // Adjust the initial position as needed
-        earth.style.top = `${window.innerHeight / 2 - 50}px`;
 
         function animateStar(star) {
             const speed = getRandomNumber(1, 5);
